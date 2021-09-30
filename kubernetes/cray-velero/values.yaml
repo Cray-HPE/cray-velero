@@ -1,12 +1,13 @@
 
 # Used for Helm Hooks
 kubectl:
-  image: dtr.dev.cray.com/loftsman/loftsman
-  tag: 0.5.1
+  image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+  tag: 1.19.9
+
 
 velero:
   image:
-    repository: docker.io/velero/velero
+    repository: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero
     tag: v1.5.2
   
   initContainers: # Cannot patch in partial lists to upstream chart
