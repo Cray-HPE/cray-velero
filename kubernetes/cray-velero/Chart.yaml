@@ -3,6 +3,7 @@ name: cray-velero
 version: 0.0.2
 description: Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes
 home: https://github.com/Cray-HPE/cray-velero
+icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
 sources:
 - https://github.com/vmware-tanzu/velero
 - https://github.com/vmware-tanzu/helm-charts
