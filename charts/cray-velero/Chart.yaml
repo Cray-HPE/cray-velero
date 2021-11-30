@@ -28,4 +28,4 @@ annotations:
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.1.0
     - name: velero-restic-restore-helper
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-restic-restore-helper:v1.5.2
-artifacthub.io/license: MIT
+  artifacthub.io/license: MIT
