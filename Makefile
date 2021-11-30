@@ -62,4 +62,4 @@ gen-docs:
 		helm-docs --chart-search-root=charts
 
 clean:
-	$(RM) -r .helm packages charts/cray-velero/charts
+	$(RM) -r .helm packages
