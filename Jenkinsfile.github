@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage("Build") {
             environment {
-                CHART_VERSIONS = getChartVersion(name: "cray-node-problem-detector",   chartDirectory: "charts", isStable: env.IS_STABLE)
+                CHART_VERSIONS = getChartVersion(name: "cray-velero", chartDirectory: "charts", isStable: env.IS_STABLE)
             }
             steps {
                 sh "make"
