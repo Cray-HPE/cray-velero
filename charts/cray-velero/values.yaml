@@ -1,15 +1,16 @@
+# Copyright 2021 Hewlett Packard Enterprise Development LP
 
 # Used for Helm Hooks
 kubectl:
   image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-  tag: 1.19.9
-
+  tag: 1.19.15
+  pullPolicy: IfNotPresent
 
 velero:
   image:
     repository: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero
     tag: v1.5.2
-  
+
   initContainers: # Cannot patch in partial lists to upstream chart
     # AWS plugin for velero
     - name: velero-plugin-for-aws
@@ -20,7 +21,7 @@ velero:
           name: plugins
     # Init container to convert Storage IAM Secrets to Standard S3 Format
     - name: convert-credentials
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.9
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
       command: 
       - 'sh'
       - '-c'
@@ -42,7 +43,7 @@ velero:
             key: secret_key
     # Init container to update backup storage location from Storage IAM Secrets
     - name: update-bsl
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.9
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
       command: 
       - 'sh'
       - '-c'
@@ -79,13 +80,13 @@ velero:
 
   configuration:
     provider: aws
-    
+
     # https://velero.io/docs/v1.5/api-types/backupstoragelocation/
     backupStorageLocation:
       bucket: velero
       config:
         region: default # arbitrary, not currently utilized by Ceph RGW in product
-        
+
         # Whether to use path-style addressing instead of virtual hosted bucket addressing. Set to "true"
         # if using a local storage service like MinIO.
         #
