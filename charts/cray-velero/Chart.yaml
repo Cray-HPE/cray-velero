@@ -5,6 +5,10 @@ description: Velero is an open source tool to safely backup and restore, perform
 keywords:
   - velero
 home: https://github.com/Cray-HPE/cray-velero
+dependencies:
+  - name: velero
+    version: 2.14.1
+    repository: https://vmware-tanzu.github.io/helm-charts
 maintainers:
   - name: bklei
   - name: cdelatte-hpe
