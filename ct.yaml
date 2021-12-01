@@ -1,0 +1,2 @@
+chart-repos:
+  - vmware-tanzu=https://vmware-tanzu.github.io/helm-charts

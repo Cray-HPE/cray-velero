@@ -1,26 +1,28 @@
+# Copyright 2021 Hewlett Packard Enterprise Development LP
 
 # Used for Helm Hooks
 kubectl:
-  image: dtr.dev.cray.com/loftsman/loftsman
-  tag: 0.5.1
+  image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+  tag: 1.19.15
+  pullPolicy: IfNotPresent
 
 velero:
   image:
-    repository: docker.io/velero/velero
+    repository: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero
     tag: v1.5.2
-  
-  initContainers: # Cannot patch in partial lists to upstream chart
+
+  initContainers:  # Cannot patch in partial lists to upstream chart
     # AWS plugin for velero
     - name: velero-plugin-for-aws
-      image:  docker.io/velero/velero-plugin-for-aws:v1.1.0
+      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.1.0
       imagePullPolicy: IfNotPresent
       volumeMounts:
         - mountPath: /target
           name: plugins
     # Init container to convert Storage IAM Secrets to Standard S3 Format
     - name: convert-credentials
-      image:  dtr.dev.cray.com/loftsman/loftsman:0.5.1
-      command: 
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      command:
       - 'sh'
       - '-c'
       - 'printf "[default]\naws_access_key_id = %s\naws_secret_access_key = %s\n" "$S3_ACCESS_KEY_ID" "$S3_SECRET_KEY" > /tmp/.secret && kubectl -n "$MY_POD_NAMESPACE" create secret generic velero-iam --from-file=cloud=/tmp/.secret --dry-run -o  yaml | kubectl apply -f -'
@@ -41,8 +43,8 @@ velero:
             key: secret_key
     # Init container to update backup storage location from Storage IAM Secrets
     - name: update-bsl
-      image: dtr.dev.cray.com/loftsman/loftsman:0.5.1
-      command: 
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      command:
       - 'sh'
       - '-c'
       - 'kubectl -n "$MY_POD_NAMESPACE" patch backupstoragelocation default --type=json -p="[{\"op\" : \"replace\",\"path\":\"/spec/config/s3Url\", \"value\" : \"$HTTP_S3_ENDPOINT\"}]"'
@@ -58,13 +60,12 @@ velero:
             key: http_s3_endpoint
 
   configMaps:
-    restic-restore-action-config: # required to override image...
+    restic-restore-action-config:  # required to override image...
       labels:
         velero.io/plugin-config: ""
         velero.io/restic: RestoreItemAction
       data:
-        # Will use same tag as main velero app, if omitted
-        image: docker.io/velero/velero-restic-restore-helper
+        image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-restic-restore-helper:v1.5.2
 
   # Use restic for pod volume backups
   # note limitations here: https://velero.io/docs/v1.0.0/restic/#limitations
@@ -78,20 +79,20 @@ velero:
 
   configuration:
     provider: aws
-    
+
     # https://velero.io/docs/v1.5/api-types/backupstoragelocation/
     backupStorageLocation:
       bucket: velero
       config:
-        region: default # arbitrary, not currently utilized by Ceph RGW in product
-        
+        region: default  # arbitrary, not currently utilized by Ceph RGW in product
+
         # Whether to use path-style addressing instead of virtual hosted bucket addressing. Set to "true"
         # if using a local storage service like MinIO.
         #
         # Optional (defaults to "false").
         s3ForcePathStyle: "true"
 
-        # Will need to use an HTTP endpoint until ceph-rgw supports a cert 
+        # Will need to use an HTTP endpoint until ceph-rgw supports a cert
         # signed by platform CA. Velero supports TLS without validation,
         # but restic does not.
         #
