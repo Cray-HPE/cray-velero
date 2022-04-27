@@ -14,7 +14,7 @@ velero:
   initContainers:  # Cannot patch in partial lists to upstream chart
     # AWS plugin for velero
     - name: velero-plugin-for-aws
-      image: artifactory.algol60.net/csm-docker/stable/velero/velero-plugin-for-aws:v1.1.0
+      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.2.1
       imagePullPolicy: IfNotPresent
       volumeMounts:
         - mountPath: /target
