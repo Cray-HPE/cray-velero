@@ -65,7 +65,7 @@ velero:
         velero.io/plugin-config: ""
         velero.io/restic: RestoreItemAction
       data:
-        image: artifactory.algol60.net/csm-docker/stable/velero/velero-restic-restore-helper:v1.6.3
+        image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-restic-restore-helper:v1.6.3
 
   # Use restic for pod volume backups
   # note limitations here: https://velero.io/docs/v1.0.0/restic/#limitations
