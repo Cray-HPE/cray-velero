@@ -1,13 +1,13 @@
 apiVersion: v2
 name: cray-velero
-version: 1.6.3
+version: 1.7.1
 description: Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes
 keywords:
   - velero
 home: https://github.com/Cray-HPE/cray-velero
 dependencies:
   - name: velero
-    version: 2.23.12
+    version: 2.27.5
     repository: https://vmware-tanzu.github.io/helm-charts
 maintainers:
   - name: bklei
@@ -16,7 +16,7 @@ icon: https://cdn-images-1.medium.com/max/1600/1*-9mb3AKnKdcL_QD3CMnthQ.png
 sources:
 - https://github.com/vmware-tanzu/velero
 - https://github.com/vmware-tanzu/helm-charts
-appVersion: 2.23.12
+appVersion: 2.27.5
 annotations:
   artifacthub.io/changes: |
     - kind: security
@@ -30,7 +30,7 @@ annotations:
     - name: docker-kubectl
       image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
     - name: velero
-      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero:v1.6.3
+      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero:v1.7.1
     - name: velero-plugin-for-aws
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.2.0
     - name: velero-restic-restore-helper
