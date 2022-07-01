@@ -55,7 +55,7 @@ annotations:
     - name: velero
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero:v1.7.1
     - name: velero-plugin-for-aws
-      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.2.0
+      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.3.1
     - name: velero-restic-restore-helper
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-restic-restore-helper:v1.7.1
   artifacthub.io/license: MIT
