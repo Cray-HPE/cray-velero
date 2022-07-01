@@ -53,7 +53,7 @@ annotations:
     - name: docker-kubectl
       image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
     - name: velero
-      image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero:v1.7.1
+      image: artifactory.algol60.net/csm-docker/stable/velero/velero:v1.7.1
     - name: velero-plugin-for-aws
       image: artifactory.algol60.net/csm-docker/stable/docker.io/velero/velero-plugin-for-aws:v1.3.1
     - name: velero-restic-restore-helper
