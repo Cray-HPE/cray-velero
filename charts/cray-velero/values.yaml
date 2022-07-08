@@ -121,3 +121,8 @@ velero:
         # https://github.com/vmware-tanzu/velero/issues/2335
         # https://github.com/restic/restic/issues/2656
         s3Url: 'http://rgw-vip.nmn'
+
+  kubectl:
+    image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.19.15
+    pullPolicy: IfNotPresent
