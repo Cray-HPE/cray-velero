@@ -123,6 +123,7 @@ velero:
         s3Url: 'http://rgw-vip.nmn'
 
   kubectl:
-    image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-    tag: 1.19.15
-    pullPolicy: IfNotPresent
+    image:
+      repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+      tag: 1.19.15
+      pullPolicy: IfNotPresent
