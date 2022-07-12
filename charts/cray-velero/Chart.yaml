@@ -51,7 +51,7 @@ annotations:
           url: https://github.com/Cray-HPE/cray-velero/pull/2
   artifacthub.io/images: |
     - name: docker-kubectl
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.21.12
     - name: velero
       image: artifactory.algol60.net/csm-docker/stable/velero/velero:v1.7.1
     - name: velero-plugin-for-aws
