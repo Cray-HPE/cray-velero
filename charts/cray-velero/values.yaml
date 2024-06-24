@@ -25,7 +25,7 @@
 # Used for Helm Hooks
 kubectl:
   image: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-  tag: 1.19.15
+  tag: 1.21.12
   pullPolicy: IfNotPresent
 
 velero:
@@ -43,7 +43,7 @@ velero:
           name: plugins
     # Init container to convert Storage IAM Secrets to Standard S3 Format
     - name: convert-credentials
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.21.12
       command:
       - 'sh'
       - '-c'
@@ -65,7 +65,7 @@ velero:
             key: secret_key
     # Init container to update backup storage location from Storage IAM Secrets
     - name: update-bsl
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.21.12
       command:
       - 'sh'
       - '-c'
@@ -125,5 +125,5 @@ velero:
   kubectl:
     image:
       repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-      tag: 1.19.15
+      tag: 1.21.12
       pullPolicy: IfNotPresent
