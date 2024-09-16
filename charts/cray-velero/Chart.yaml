@@ -1,7 +1,7 @@
 #
 # MIT License
 #
-# (C) Copyright 2022 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2022,2024 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: cray-velero
-version: 1.6.3-2
+version: 1.6.3-3
 description: Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes
 keywords:
   - velero
@@ -51,7 +51,7 @@ annotations:
           url: https://github.com/Cray-HPE/cray-velero/pull/2
   artifacthub.io/images: |
     - name: docker-kubectl
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.24.17
     - name: velero
       image: artifactory.algol60.net/csm-docker/stable/velero/velero:v1.6.3
     - name: velero-plugin-for-aws
